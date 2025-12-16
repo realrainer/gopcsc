@@ -4,6 +4,7 @@
 package smartcard
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/realrainer/gopcsc/smartcard/pcsc"
@@ -72,6 +73,9 @@ func (ctx *Context) listReaders(withCard bool) ([]*Reader, error) {
 func (ctx *Context) WaitForCardPresent() (*Reader, error) {
 	var reader *Reader
 	for reader == nil {
+		if err := ctx.client.WaitReaderStateChange(); err != nil {
+			return nil, fmt.Errorf("WaitReaderStateChange: %w", err)
+		}
 		count, err := ctx.client.SyncReaders()
 		if err != nil {
 			return nil, err
@@ -86,7 +90,6 @@ func (ctx *Context) WaitForCardPresent() (*Reader, error) {
 		if reader != nil {
 			break
 		}
-		time.Sleep(250 * time.Millisecond)
 	}
 	return reader, nil
 }
