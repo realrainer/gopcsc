@@ -1,3 +1,4 @@
+//go:build !windows
 // +build !windows
 
 package smartcard
@@ -5,7 +6,7 @@ package smartcard
 import (
 	"time"
 
-	"github.com/deeper-x/gopcsc/smartcard/pcsc"
+	"github.com/realrainer/gopcsc/smartcard/pcsc"
 )
 
 // A smart card context is required to access readers and cards.

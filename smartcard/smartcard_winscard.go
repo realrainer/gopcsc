@@ -1,10 +1,11 @@
+//go:build windows
 // +build windows
 
 package smartcard
 
 import (
 	"fmt"
-	"github.com/deeper-x/gopcsc/smartcard/pcsc"
+	"github.com/realrainer/gopcsc/smartcard/pcsc"
 	"time"
 )
 

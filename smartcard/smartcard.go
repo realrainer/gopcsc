@@ -3,22 +3,22 @@ Package smartcard implements a portable high-level API for communicating with sm
 
 Example:
 
-    ctx, err := smartcard.EstablishContext()
-    // handle error, if any
-    defer ctx.Release()
+	ctx, err := smartcard.EstablishContext()
+	// handle error, if any
+	defer ctx.Release()
 
-    reader, err := ctx.WaitForCardPresent()
-    // handle error, if any
+	reader, err := ctx.WaitForCardPresent()
+	// handle error, if any
 
-    card, err := reader.Connect()
-    // handle error, if any
-    defer card.Disconnect()
+	card, err := reader.Connect()
+	// handle error, if any
+	defer card.Disconnect()
 
-    fmt.Printf("Card ATR: %s\n", card.ATR())
-    command := SelectCommand(0xa0, 0x00, 0x00, 0x00, 0x62, 0x03, 0x01, 0xc, 0x01, 0x01)
-    response, err := card.TransmitAPDU(command)
-    // handle error, if any
-    fmt.Printf("Response: %s\n", response)
+	fmt.Printf("Card ATR: %s\n", card.ATR())
+	command := SelectCommand(0xa0, 0x00, 0x00, 0x00, 0x62, 0x03, 0x01, 0xc, 0x01, 0x01)
+	response, err := card.TransmitAPDU(command)
+	// handle error, if any
+	fmt.Printf("Response: %s\n", response)
 */
 package smartcard
 
@@ -26,7 +26,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/deeper-x/gopcsc/smartcard/pcsc"
+	"github.com/realrainer/gopcsc/smartcard/pcsc"
 )
 
 const (

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/deeper-x/gopcsc/smartcard"
+	"github.com/realrainer/gopcsc/smartcard"
 )
 
 func main() {

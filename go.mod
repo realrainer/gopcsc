@@ -1,3 +1,3 @@
-module github.com/deeper-x/gopcsc
+module github.com/realrainer/gopcsc
 
 go 1.12
